@@ -1,0 +1,8 @@
+.git
+.mp/
+venv/
+__pycache__/
+*.pyc
+config.json
+.env
+.firefox-profiles/

@@ -1,0 +1,12 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "bash /app/scripts/railway_start.sh"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 5
+
+[[mounts]]
+source = "mpv2-data"
+mountPath = "/app/.mp"
