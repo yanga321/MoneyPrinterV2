@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fontconfig \
     fonts-liberation \
     libsndfile1 \
+    zstd \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Ollama
