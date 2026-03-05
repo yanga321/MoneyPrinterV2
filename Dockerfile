@@ -19,9 +19,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install Ollama
 RUN curl -fsSL https://ollama.com/install.sh | sh
 
-# Install GeckoDriver (pre-install to avoid runtime network calls)
-RUN GECKODRIVER_VERSION=$(curl -sS https://api.github.com/repos/mozilla/geckodriver/releases/latest | grep '"tag_name"' | sed 's/.*"v\(.*\)".*/\1/') \
-    && wget -q "https://github.com/mozilla/geckodriver/releases/download/v${GECKODRIVER_VERSION}/geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz" -O /tmp/geckodriver.tar.gz \
+# Install GeckoDriver (pinned version to avoid GitHub API rate limits)
+RUN wget -q "https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-linux64.tar.gz" -O /tmp/geckodriver.tar.gz \
     && tar -xzf /tmp/geckodriver.tar.gz -C /usr/local/bin/ \
     && rm /tmp/geckodriver.tar.gz \
     && chmod +x /usr/local/bin/geckodriver
